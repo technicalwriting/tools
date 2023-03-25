@@ -1,0 +1,14 @@
+# Ignore everything
+/*
+
+# Except these files & folders
+# TODO: https://github.com/satnaing/astro-paper/issues/51
+# !/src
+# !/public
+# !/.github
+# !tsconfig.json
+# !astro.config.mjs
+# !package.json
+# !.prettierrc
+# !.eslintrc.js
+# !README.md

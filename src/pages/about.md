@@ -7,4 +7,5 @@ TODO
 
 ## Tech stack
 
-TODO
+* Static site generator: [Astro](https://astro.build)
+* Theme: [AstroPaper](https://github.com/satnaing/astro-paper)

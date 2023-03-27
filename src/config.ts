@@ -6,7 +6,7 @@ export const SITE: Site = {
   desc: "TOOLS",
   title: "technicalwriting.tools",
   ogImage: "astropaper-og.jpg",
-  lightAndDarkMode: true,
+  lightAndDarkMode: false,
   postPerPage: 3,
 };
 

@@ -4,7 +4,8 @@ title: "About"
 ---
 
 A blog by Kayce Basques that explores technical writing tools like static site
-generators, generative AI, link checkers, and so on. All opinions my own.
+generators, generative AI, link checkers, and so on. Explorations of
+docs-as-code topics, in other words. All opinions my own.
 
 ## Tech stack
 

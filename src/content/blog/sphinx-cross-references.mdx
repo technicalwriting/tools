@@ -13,10 +13,10 @@ description: >
 
 <p>{frontmatter.description}</p>
 
-(Throughout this post I use the term **docs SSGs** to refer to the static
-site generators (SSGs) that most documentation websites are built on top
-of: Docusaurus, Jekyll, Sphinx, and so on. This idea also applies to docs
-content management systems like Wordpress, readme.io, and so on.)
+(Throughout this post I use the term **docs SSGs** to refer to the static site
+generators (SSGs) that most documentation websites are built on top of:
+Docusaurus, Jekyll, Sphinx, and so on. The ideas in this post also apply to docs
+content management systems (CMSs) like WordPress, readme.com, and so on.)
 
 ## Background
 
@@ -44,11 +44,7 @@ In most docs SSGs, you have to manually create and maintain the link text.
 For example, over in `guide.md` we might have a section heading like this:
 
 ```
-...
-
 ## How to enable text compression { #compression }
-
-...
 ```
 
 (Assume that `{ #compression }` is a non-standard feature that allows you
@@ -59,11 +55,7 @@ idea for another day.)
 And then over in `reference.md` we link to this section like this:
 
 ```
-...
-
 See [How to enable text compression](./guide#compression).
-
-...
 ```
 
 (Assuming that both docs live in the same directory.)
@@ -87,15 +79,11 @@ Automatic replacement of placeholders is exactly what Sphinx provides. Over in
 [explicit target] to the section heading:
 
 ```
-...
-
 .. _compression:
 
 ==============================
 How to enable text compression
 ==============================
-
-...
 ```
 
 (The filename changed from `guide.md` to `guide.rst` because most Sphinx sites
@@ -105,18 +93,16 @@ syntax called [MyST].)
 And then in `reference.rst` you simply add a reference to that section heading:
 
 ```
-...
-
 See :ref:`compression`.
-
-...
 ```
+
+This gets replaced with `How to enable text compression` at build time.
 
 This solution totally fixes the toil problem but it doesn't quite fix the rot
 problem. If you change that section heading in `guide.rst` there isn't really an
 automated way to make sure that the link in `reference.rst` still makes sense.
 The only solution I can think of for that problem is to create a linter like
-the [IfThisThenThat] one that the Fuchsia codebase uses.
+[IfThisThenThat].
 
 Another huge benefit of this approach is that the build system warns you when
 you're linking to a section that no longer exists:
@@ -126,9 +112,6 @@ $ make html
 Running Sphinx v6.1.3
 ...
 /.../reference.rst:4: WARNING: undefined label: 'compression'
-...
-build succeeded, 1 warning.
-...
 ```
 
 ## The status of this feature in other docs SSGs
@@ -136,9 +119,9 @@ build succeeded, 1 warning.
 [If I wasn't so lazy] I would list out the exact status of this feature on
 other docs SSGs. I am not going to do that, however, because, as previously
 alluded to, I am lazy. I don't mean to imply that this feature is not supported
-on any other doc site. I am sure there is some other docs site out there that
-has "seen the light." From what I can tell, though, Sphinx has the best built-in
-support for this feature.
+on any other docs SSG. I am sure there is some other docs SSG out there that
+has "seen the light." From what I can tell, though, Sphinx has the best and
+most prominent built-in support for this feature.
 
 ## ChatGPT's summary of this post
 

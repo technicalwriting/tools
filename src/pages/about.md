@@ -15,3 +15,9 @@ docs-as-code topics, in other words. All opinions my own.
 * Website deployment: GitHub Actions
 * Website hosting: GitHub Pages
 * Domain management: Google Domains
+
+## Career advice
+
+<img src="/cowboy_advice.jpg"
+     alt="cowboy advice: be rootin, be tootin, and by god be shootin.
+          but most of all, be kind">

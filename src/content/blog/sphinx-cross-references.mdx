@@ -2,24 +2,23 @@
 author: Kayce Basques
 pubDatetime: 2023-03-30T11:11:11Z
 title: >
-  The curious case of the super helpful Sphinx feature that is strangely lacking
-  from other docs sites
+  The curious case of the helpful Sphinx feature that is strangely missing
+  in other docs SSGs
 postSlug: sphinx-cross-references
 tags:
   - ssg
   - sphinx
-  - cms
 description: >
   Sphinx's approach to link text improves docs maintainability and reduces
-  toil. Why is this approach not more common in other docs sites?
+  toil. Why is this approach not more common in other docs SSGs?
 ---
 
 <p>{frontmatter.description}</p>
 
-(Throughout this post I use the term **docs sites** to refer to the static
-site generators (SSG) and content management systems (CMS) that most
-documentation websites are built on top of: Docusaurus, Jekyll, Sphinx,
-Wordpress, docsify, MkDocs, readme.io, and so on.)
+(Throughout this post I use the term **docs SSGs** to refer to the static
+site generators (SSGs) that most documentation websites are built on top
+of: Docusaurus, Jekyll, Sphinx, and so on. This idea also applies to docs
+content management systems like Wordpress, readme.io, and so on.)
 
 ## Background
 
@@ -41,9 +40,9 @@ that you're referencing.
 (Not having to think about this stuff is good! We technical writers have more
 than enough to think about!!)
 
-## Problems with how most docs sites approach link text
+## Problems with how most docs SSGs approach link text
 
-In most docs sites, you have to manually create and maintain the link text.
+In most docs SSGs, you have to manually create and maintain the link text.
 For example, over in `guide.md` we might have a section heading like this:
 
 ```
@@ -56,7 +55,7 @@ For example, over in `guide.md` we might have a section heading like this:
 
 (Assume that `{ #compression }` is a non-standard feature that allows you
 to define the ID for that section heading. This is another helpful feature that
-is strangely lacking in many docs sites! But, alas, I will have to save that
+is strangely lacking in many docs SSGs! But, alas, I will have to save that
 idea for another day.)
 
 And then over in `reference.md` we link to this section like this:
@@ -134,10 +133,10 @@ build succeeded, 1 warning.
 ...
 ```
 
-## The status of this feature in other docs sites
+## The status of this feature in other docs SSGs
 
 [If I wasn't so lazy] I would list out the exact status of this feature on
-other docs sites. I am not going to do that, however, because, as previously
+other docs SSGs. I am not going to do that, however, because, as previously
 alluded to, I am lazy. I don't mean to imply that this feature is not supported
 on any other doc site. I am sure there is some other docs site out there that
 has "seen the light." From what I can tell, though, Sphinx has the best built-in

@@ -2,21 +2,22 @@
 author: Kayce Basques
 pubDatetime: 2023-03-30T11:11:11Z
 title: The curious case of the missing link text automation feature
-postSlug: link-text-automation
+postSlug: sphinx-link-text-automation
 tags:
   - links
   - sphinx
 description: >
   Sphinx's approach to link text improves docs maintainability and reduces
-  toil. Why is this approach not more common?
+  toil. Yet, curiously, this feature is absent from most other docs site
+  generators.
 ---
 
 <p>{frontmatter.description}</p>
 
-(Throughout this post I use the term **docs SSGs** to refer to the static site
-generators (SSGs) that most documentation websites are built on top of:
-Docusaurus, Jekyll, Sphinx, and so on. The ideas in this post also apply to docs
-content management systems (CMSs) like WordPress, readme.com, and so on.)
+(Throughout this post I use the term **docs site generators** to refer to the
+static site generators (SSGs) and content management systems (CMSs) that
+most documentation websites are built on top of: Docusaurus, Jekyll, Sphinx,
+WordPress, and so on.
 
 ## Background
 
@@ -38,9 +39,9 @@ that you're referencing.
 (Not having to think about this stuff is good! We technical writers have more
 than enough to think about!!)
 
-## Problems with how most docs SSGs approach link text
+## Problems with how most docs site generators approach link text
 
-In most docs SSGs, you have to manually create and maintain the link text.
+In most docs site generators, you have to manually create and maintain the link text.
 For example, over in `guide.md` we might have a section heading like this:
 
 ```
@@ -49,7 +50,7 @@ For example, over in `guide.md` we might have a section heading like this:
 
 (Assume that `{ #compression }` is a non-standard feature that allows you
 to define the ID for that section heading. This is another helpful feature that
-is strangely lacking in many docs SSGs! But, alas, I will have to save that
+is strangely lacking in many docs site generators! But, alas, I will have to save that
 idea for another day.)
 
 And then over in `reference.md` we link to this section like this:
@@ -114,12 +115,12 @@ Running Sphinx v6.1.3
 /.../reference.rst:4: WARNING: undefined label: 'compression'
 ```
 
-## The status of this feature in other docs SSGs
+## The status of this feature in other docs site generators
 
 [If I wasn't so lazy] I would list out the exact status of this feature on
-other docs SSGs. I am not going to do that, however, because, as previously
+other docs site generators. I am not going to do that, however, because, as previously
 alluded to, I am lazy. I don't mean to imply that this feature is not supported
-on any other docs SSG. I am sure there is some other docs SSG out there that
+on any other docs site generators. I am sure there is some other docs site generator out there that
 has "seen the light." From what I can tell, though, Sphinx has the best and
 most prominent built-in support for this feature.
 

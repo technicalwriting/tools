@@ -18,6 +18,9 @@ docs-as-code topics, in other words. All opinions my own.
 
 ## Career advice
 
+Everything I have learned about having a successful technical writing career
+is summed up in this image:
+
 <img src="/cowboy_advice.jpg"
      alt="cowboy advice: be rootin, be tootin, and by god be shootin.
           but most of all, be kind">

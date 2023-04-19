@@ -15,10 +15,11 @@ how to author docs to make them easy for generative AI to consume. Hat tip
 to my colleagues Kyo Lee and Rundong Du for figuring a lot of this stuff
 out.
 
-(I am focused on using generative AI to help the users of your docs get their
+(I am focused on using generative AI to help the users of docs get their
 tasks done faster. Using generative AI to improve authoring, for example, is
 a totally different topic. Hat tip to my colleague Dave Holmes for highlighting
-the need to disambiguate these "generative AI for docs" discussions.)
+the need to disambiguate these "generative AI for docs" discussions into more
+focused sub-topics.)
 
 ## Disclaimers
 
@@ -40,7 +41,11 @@ see in this post might be irrelevant in a year.
   of input. You are billed based on the size of your input.
 * Small docs will probably play more nicely with generative AI than large docs.
   At minimum, your docs system should be able to take a large doc and chunk it up
-  into small sections of logically related content.
+  into small sections of logically related content. I expect that a lot of docs
+  systems will drag their feet on the "chunk large docs into small sections of
+  logical content" feature therefore I imagine the path of least resistance for
+  technical writers working within the constraints of those systems to be to
+  just write small docs.
 * If the architecture pioneered by ChatGPT Plugins takes off then web service API
   references should conform to the OpenAPI specification and should be targeted
   towards end users and generative AI rather than developers. See
@@ -197,6 +202,11 @@ logical sections and then generate an embedding for each section.
 Once you have that "database" of embeddings for every docs section, it's pretty easy
 (for a proficient programmer) to compare the query embedding against each docs section
 embedding in order to find out what docs sections are most closely related to the query.
+You then map the docs section embeddings back to the actual docs content and replace
+`${contextText}` with that docs content.
+
+Check out [Text Embeddings Visually Explained] to build up your intuition about embeddings.
+It's a pretty cool rabbithole. Also, it's such a nice piece of conceptual technical writing!
 
 [Supabase Clippy]: https://supabase.com/blog/chatgpt-supabase-docs
 [Supabase Docs]: https://supabase.com/docs
@@ -208,3 +218,4 @@ embedding in order to find out what docs sections are most closely related to th
 [What are tokens and how to count them?]: https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them
 [Models]: https://platform.openai.com/docs/models/overview
 [The role of web service API reference documentation in ChatGPT Plugins]: /posts/chatgpt-plugins
+[Text Embeddings Visually Explained]: https://txt.cohere.ai/text-embeddings/

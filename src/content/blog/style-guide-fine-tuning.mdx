@@ -15,6 +15,12 @@ description: >
 
 <p>{frontmatter.description}</p>
 
+## A crash course in fine-tuning for technical writers
+
+The main idea is that you take a generic, off-the-shelf LLM and continue its
+formal training. Your continued training gets baked into the LLM and it "remembers"
+that training. See [Context injection versus fine-tuning] for more detail.
+
 ## Reinventing the wheel?
 
 <img src="/assets/linter.jpg"
@@ -23,6 +29,9 @@ description: >
           is a skeptical man who responds with 'This is chicken nuggets.' The top
           caption has been replaced to say 'a fine-tuned LLM to enforce style guide'
           and the bottom image now says 'this is linter'."/>
+
+(This is one of my favorite memes. It gets used a lot within Google but I don't see
+it as often in public. Here's the [original](/assets/nuggets.jpg).)
 
 We don't need LLMs to solve this problem. In fact, in a past life I built a webhook bot
 that listens for incoming PRs and parses/analyzes the updated Markdown to detect style
@@ -49,14 +58,6 @@ linter approach:
 * The preparation of the training data doesn't require any programming knowledge.
 * If the LLM can "remember" hundreds or thousands of rules simultaneously then
   that would be [awesome. Awesome to the max.]
-
-## A crash course in fine-tuning for technical writers
-
-The main idea is that you take a generic, off-the-shelf LLM and continue its
-formal training. Your continued training gets baked into the LLM and it "remembers"
-that training.
-
-See [Context injection versus fine-tuning] for more detail.
 
 ## My implementation journey
 
@@ -103,15 +104,14 @@ editing mode. And it needs to know when to stop editing. This should work:
 }
 ```
 
-(Update: After finishing this post, while doing the dishes, I realized that the
-"primordial soup" approach might actually work, after all. If you've got hundreds
-of examples where the completion is very similar to the prompt, the LLM might learn
-through the fine-tuning process that it's role is to just edit the prompt.)
+(After finishing the experiment I realized that the "primordial soup" approach might
+actually work, after all. If you've got hundreds of examples where the completion is
+very similar to the prompt, the LLM might learn through the fine-tuning process that
+its role is to just edit the prompt.)
 
 Every prompt that I send to the LLM will have to include `FIXME: ` and `@STOP!!` in
-order to activate the LLM's editor mode.
-
-There are probably better ways to do this. But this is good enough for a first prototype.
+order to activate the LLM's editor mode. There are probably better ways to do this.
+But this is good enough for a first prototype.
 
 Now I need to prepare the training data. OpenAI says to use a few hundred examples but
 I'm going to see if I can get away with only 10. I'm going to hack together a little
@@ -154,7 +154,8 @@ model, I can try out the new model in the OpenAI Playground!
      alt="The text 'FIXME: I hope that it is working.@STOP!!' was inserted into the OpenAI
           Playground. The fine-tuned model responded with 'I hope that it's working.' as expected."/>
 
-It seems like it worked!
+`FIXME: I hope that it is working.@STOP!!` is the text that I entered. After clicking
+`Submit` the LLM responded with `I hope that it's working.` So it seems like it worked!
 
 Configuration tweaks to note:
 
@@ -165,7 +166,8 @@ Configuration tweaks to note:
   and I currently never need a response bigger than 100 tokens.
 
 Let's try some more. There are some instances of `it is` that should not get
-changed. For example, it shouldn't edit `tell it like it is` to `tell it like it's`.
+changed. For example, `tell it like it is` shouldn't get edited to
+`tell it like it's`.
 
 (Now that you're familiar with the OpenAI Playground UI, I'm just going to show the
 prompts and completions as text.)
@@ -185,8 +187,8 @@ I hope that my fine-tuned LLM keeps this text as it
 Well, the good news is that it kept `it is`. The bad news is that the text is
 repeating. I have seen this before. I thought that setting the **Stop sequences**
 field to `@STOP!!` would prevent it from happening. The stop sequence thing worked
-in the first attempt. But now the "repeating text" problem is back. There are probably
-ways to fix this. I don't think it's a blocker.
+in the first attempt. But now the "repeating text" problem is back. It's annoying
+but there are probably workarounds so I don't think it's a dealbreaker.
 
 How about a contraction that doesn't appear in my training data like `what is`?
 Will the LLM change it to `what's`?
@@ -271,9 +273,8 @@ Remember that it's not a toy. STOP: Remember that it's not a toy. STOP:
 ...
 ```
 
-Yes, the fine-tuned LLLM "remembered" both rules.
-
-This is a good stopping point.
+Yes, the fine-tuned LLLM "remembered" both rules! OK, I've seen enough.
+Let's wrap this up.
 
 ## Cost
 

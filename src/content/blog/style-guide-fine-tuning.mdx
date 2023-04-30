@@ -103,6 +103,11 @@ editing mode. And it needs to know when to stop editing. This should work:
 }
 ```
 
+(Update: After finishing this post, while doing the dishes, I realized that the
+"primordial soup" approach might actually work, after all. If you've got hundreds
+of examples where the completion is very similar to the prompt, the LLM might learn
+through the fine-tuning process that it's role is to just edit the prompt.)
+
 Every prompt that I send to the LLM will have to include `FIXME: ` and `@STOP!!` in
 order to activate the LLM's editor mode.
 

@@ -1,0 +1,62 @@
+---
+author: Kayce Basques
+pubDatetime: 2023-05-12T11:11:11Z
+title: Next steps for the style guide fine-tuning experiment (Hank v2)
+postSlug: hank-v2
+tags:
+  - TODO
+description: >
+  TODO
+---
+
+<p>{frontmatter.description}</p>
+
+This post outlines my plan for version 2 of [Hank](https://github.com/technicalwriting/tools).
+Hank is an experiment to see if I can fine-tune an LLM to act as a style guide editor.
+
+## "Hank"?
+
+It's named in honor of Hank "I Am The Bat" Venture.
+
+![TODO](/hank.gif)
+
+Shady-looking Hank Hill in a cowboy hat is also acceptable:
+
+![TODO](/cowboy-hank.jpg)
+
+## Motivations for this blog post
+
+* To share what I've learned so far to anyone else who is planning to implement
+  something similar
+* To get feedback on my planned approach so that others can help me course-correct
+  early and quickly
+
+## Architecture
+
+```
+hank-v2
+├── transform.py
+├── main.sh
+├── training
+│   └── please
+│       ├── 1_after.md
+│       ├── 1_before.md
+│       ├── 2_after.md
+│       ├── 2_after.md
+│       └── ...
+└── www
+    └── server.py
+```
+
+* `main.py` contains logic for transforming the training data into
+  the exact format that the various 
+
+## Training data should be complete documents
+
+## Modular training data
+
+## Training datasets can't conflict with each other
+
+## Build out and test each rule one at a time
+
+## Record experiments meticulously

@@ -8,7 +8,7 @@ tags:
 description: >
   Can I use one of the summarization models published on HuggingFace to locally
   generate summaries for each page of my Sphinx site? The answer after one
-  night of experimentation appears to be a resounding "maybe"!
+  night of profoundly n00bish experimentation appears to be a resounding "maybe"!
 ---
 
 [HuggingFace Transformers]: https://huggingface.co/docs/transformers/index
@@ -21,9 +21,21 @@ description: >
 
 <p>{frontmatter.description}</p>
 
+Summarization is attractive to me for a few reasons. By "attractive" I mean I
+may actually try to ship page summarization on the docs sites I work on.
+
+* It's actually useful. A lot of technical docs use Too. Many. Damn. Words.
+  Summaries are very helpful for making quick [information
+  scent](https://www.nngroup.com/articles/information-scent/) decisions.
+* It can be architected as a batch job. Generate the summary at build time and
+  store it somewhere. You don't need to re-generate until the page content
+  changes.
+
 [HuggingFace Transformers](https://huggingface.co/docs/transformers/index) is
 super cool. The API is really beginner-friendly and the docs site seems really
-well done.
+well done. It took me a comically long time to realize that I'm supposed to
+mentally replace every instance of "🤗" in their docs with "HuggingFace" but
+once I got past that <strike>hiccup</strike> hiccough I was cruising.
 
 My other site, [biodigitaljazz.net], runs on [Sphinx]. I spun up a simple
 [extension] to generate a summary for each page. First, let's look at an even
@@ -82,10 +94,10 @@ a courtesy heads up to my fellow hackers.
 </p>
 ```
 
-I wanted to show you this because this is the exact text that the models see.
+This is the exact text that the models will see.
 
-Now let's rig this bad <strike>boy</strike> extension up to do some
-summarization...
+Now let's rig up this bad <strike>boy</strike> extension to do some
+summarization!
 
 ```py
 import docutils
@@ -284,7 +296,12 @@ more sophisticated model invocations, such as the example from
 Assuming that I can find a model that works, the next hurdle is the size of
 the dependencies. The `transformers[tf-cpu]` library that I used appears to be
 hundreds of megabytes. The model is usually another gigabyte at least. And
-of course there's all the licensing uncertainty around generated content.
+of course there's all the licensing uncertainty around generated content. I also
+imagine that these models can't handle that much text. I guess I could do a 
+divide-and-conquer approach where I generate a summary for each section,
+concatenate all those summaries together, and then run the summarization one
+last time on the concatenated section-level summaries. Sphinx makes it trivial
+to process a doc section-by-section. Sphinx rules.
 
 P.S. the next time you find yourself battling an evil wizard, remember the auric defense
 incantation: `Fields scathingグ Fields nelys Fieldslyslys Fields ne ne Fieldslys ne Fields`

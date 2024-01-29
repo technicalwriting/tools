@@ -10,7 +10,6 @@ description: >
   Google Search Console.
 ---
 
-
 While digging into the Google Search Console data for
 [pigweed.dev](https://pigweed.dev) this month I discovered a peculiar problem:
 we have a bunch of pages that are labeled as `Discovered - currently not
@@ -53,6 +52,12 @@ The plot thickens, as they say. ([Why, by the way? Is it a soup metaphor?])
 It doesn't sound like I've misconfigured anything. It sounds like I just need
 to get Google Search to re-crawl the pages.
 
+[sphinx-sitemap]: https://github.com/jdillard/sphinx-sitemap
+
+(Back in October I added [sphinx-sitemap] to start auto-generating pigweed.dev's
+sitemap. Maybe Google Search discovered a bunch of new URLs through the sitemap
+and decided that it would overload the site if it tried to index them all?)
+
 How to fix this? Previously there was a **VALIDATE FIX** button. I clicked that
 on 20 Jan 2024 but given that it's now 29 Jan 2024 and nothing has changed,
 I'll have to assume that that button doesn't actually do anything. What else
@@ -70,7 +75,7 @@ On the URL's details page I see a **REQUEST INDEXING** button:
 
 ![Google Search Console > URL Inspection](/assets/gsc-request.png)
 
-After clicking **REQUEST INDEXING**a modal pops up and tells me it'll take a
+After clicking **REQUEST INDEXING** a modal pops up and tells me it'll take a
 minute or two to kick off the manual indexing request and then it confirms that
 the request has been added to the manual request queue.
 
@@ -84,5 +89,5 @@ I'll update this post if I find better ways to fix this problem.
 Updates:
 
 * [Ahrefs](https://ahrefs.com/blog/discovered-currently-not-indexed/) has a
-  good post on the topic. For [pigweed.dev](https://pigweed.dev) I suspect that
-  the issue is related to how we've configured redirects.
+  good post on the topic. For pigweed.dev I suspect that the issue is related
+  to how we've configured redirects.

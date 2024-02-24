@@ -21,6 +21,12 @@ description: >
   stateful docs site assistants are possible.
 ---
 
-<script>
-  window.location.replace('https://technicalwriting.dev/stateful-assistants.html');
-</script>
+import Scriptify from "@components/Scriptify"
+
+<Scriptify>
+  {
+    <script>
+      window.location.replace('https://technicalwriting.dev/stateful-assistants.html');
+    </script>
+  }
+</Scriptify>

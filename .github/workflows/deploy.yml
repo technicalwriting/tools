@@ -27,7 +27,7 @@ jobs:
     environment:
       name: envpages
       url: ${{ steps.deployment.outputs.page_url }}
-    needs: build
+    needs: www
     runs-on: ubuntu-latest
     name: deploypages
     steps:
